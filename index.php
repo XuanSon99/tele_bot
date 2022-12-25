@@ -7,5 +7,5 @@ $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
 if (strpos($message, "/start") === 0) {
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Here's the weather in");
+    file_get_contents("$path/sendMessage?chat_id=$chatId&text=Here's the weather in");
 }
