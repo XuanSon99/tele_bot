@@ -12,9 +12,15 @@
     if (strpos($message, "/xinchao") === 0) {
         $response = "Chào bạn, BOT có thể giúp gì? \n";
 
-        $ch = curl_init('https://api.telegram.org/bot' . $token . '/sendMessage?chat_id=' . $chatId . '&text=' . $response);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_close($ch);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://api.telegram.org/bot' . $token . '/sendMessage?chat_id=' . $chatId . '&text=' . $response,
+            CURLOPT_POST => 1,
+            CURLOPT_SSL_VERIFYPEER => false
+        ));
+        curl_close($curl);
     }
     ?>
 
